@@ -24,9 +24,9 @@ const HomePageCards = () => {
         },
     ]
     return (
-        <div>
-            <h1>Our Categories</h1>
-        <div className='grid gap-6 mt-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+        <div className='max-w-[1210px] mx-auto'>
+            <h1 className='text-5xl font-bold'>Our Categories</h1>
+        <div className='grid gap-4 mt-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {
                 cards.map(card=>
                     <SingleCard
