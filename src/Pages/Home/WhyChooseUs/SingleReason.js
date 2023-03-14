@@ -2,7 +2,6 @@ import React from 'react';
 import './SingleReason.css';
 const SingleReason = ({reason}) => {
     const {img,title,description} = reason;
-    console.log(reason)
     return (
 //         <div className="card card-compact w-96 bg-base-100 shadow-xl">
 //   <figure><img src={img} className='h-90' alt="Shoes" /></figure>
@@ -14,12 +13,13 @@ const SingleReason = ({reason}) => {
 //     </div>
 //   </div>
 // </div>
-<div>
-    <div>
-        <img src={img} className= "image-height rounded-2xl image-height" alt="" />
+<div className='py-5 px-5'>
+    <div className='flex justify-center'>
+        <img src={img} className= "image-height rounded-full" alt="" />
     </div>
     <div>
-        {description}
+        <h3 className='text-center font-bold text-2xl'>{title}</h3>
+        <p className='text-center'>{description}</p>
     </div>
 </div>
     );
