@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from '../Home/Home';
 import HomePageCards from '../HomePageCards/HomePageCards';
+import Testimonial from '../Testimonial/Testimonial';
 import WhyChooseUs from '../WhyChooseUs/WhyChooseUs';
 
 const HomePage = () => {
@@ -9,6 +10,7 @@ const HomePage = () => {
             <Home></Home>
             <HomePageCards></HomePageCards>
             <WhyChooseUs></WhyChooseUs>
+            <Testimonial></Testimonial>
         </div>
     );
 };
