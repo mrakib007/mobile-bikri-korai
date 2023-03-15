@@ -18,8 +18,8 @@ const SingleReason = ({reason}) => {
         <img src={img} className= "image-height rounded-full" alt="" />
     </div>
     <div>
-        <h3 className='text-center font-bold text-2xl'>{title}</h3>
-        <p className='text-center'>{description}</p>
+        <h3 className='text-center font-bold text-2xl mt-5'>{title}</h3>
+        <p className='text-center py-5'>{description}</p>
     </div>
 </div>
     );
