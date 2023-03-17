@@ -8,6 +8,8 @@ const SignUp = () => {
   const {register,handleSubmit,formState:{errors}} = useForm();
   const [signUpError,setSignUpError] = useState('');
   const {createUser,updateUser} = useContext(AuthContext);
+  const [createdUserEmail,setCreatedUserEmail] = useState('');
+  const {reset} = useForm();
 
   const handleSignUp = (data) =>{
     setSignUpError('');
@@ -23,13 +25,26 @@ const SignUp = () => {
       updateUser(userInfo)
       .then(()=>{
         saveUser(data.name,data.email,data.role);
+        reset(data);
       })
       .catch(error => console.log(error));
     })
   }
 
   const saveUser = (name,email,role) =>{
-    
+    const user = {name,email,role};
+    fetch('http://localhost:5000/users',{
+      method: 'Post',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log('saved user',data);
+      setCreatedUserEmail(email);
+    })
   }
     return (
       <div className="hero height bg-base-200  max-w-[1210px] mx-auto my-auto">
@@ -94,6 +109,7 @@ const SignUp = () => {
                         </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Sign Up</button>
+           {signUpError && <p className='text-red-600'>{signUpError}</p>}
             </div>
             <div class="divider">OR</div>
         <div className="form-control mt-6">
