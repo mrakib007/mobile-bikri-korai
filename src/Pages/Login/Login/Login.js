@@ -93,8 +93,9 @@ const Login = () => {
         </div>
 
         <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
-          <form onSubmit={handleSubmit(handleLogin)}>
+          {/* <form onSubmit={handleSubmit(handleLogin)}> */}
             <div className="card-body">
+            <form onSubmit={handleSubmit(handleLogin)}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -147,12 +148,17 @@ const Login = () => {
               </div>
               <div class="divider">OR</div>
               <div className="form-control mt-6">
-                <button onClick={handleGoogleSignIn} className="btn btn-info">
+                {/* <button onClick={handleGoogleSignIn} className="btn btn-info">
+                  Continue with Google
+                </button> */}
+              </div>
+
+              </form>
+              <button onClick={handleGoogleSignIn} className="btn btn-info">
                   Continue with Google
                 </button>
-              </div>
             </div>
-          </form>
+          {/* </form> */}
         </div>
       </div>
     </div>
