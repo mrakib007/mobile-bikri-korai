@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const SignUp = () => {
   const {register,handleSubmit,formState:{errors}} = useForm();
+  const [signUpError,setSignUpError] = useState('');
+  const {createUser,updateUser} = useContext(AuthContext);
+
+  const handleSignUp = (data) =>{
+    setSignUpError('');
+    console.log(data)
+    createUser(data.email,data.password,data.role)
+    .then(result =>{
+      const user = result.user;
+      console.log(user);
+      toast.success("User created successfully!");
+      const userInfo = {
+        displayName: data.name
+      }
+      updateUser(userInfo)
+      .then(()=>{
+        saveUser(data.name,data.email,data.role);
+      })
+      .catch(error => console.log(error));
+    })
+  }
+
+  const saveUser = (name,email,role) =>{
+    
+  }
     return (
       <div className="hero height bg-base-200  max-w-[1210px] mx-auto my-auto">
       <div className="hero-content flex-col lg:flex-row">
@@ -15,7 +42,7 @@ const SignUp = () => {
 
         
         <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
-        <form onSubmit={handleSubmit()}>
+        <form onSubmit={handleSubmit(handleSignUp)}>
           <div className="card-body">
             <div className="form-control">
               <label className="label">

@@ -5,6 +5,10 @@ import './Login.css';
 
 const Login = () => {
   const {register,handleSubmit,formState:{errors}} = useForm();
+
+  const handleLogin = (data) =>{
+
+  }
   return (
     <div className="hero height bg-base-200  max-w-[1210px] mx-auto my-auto">
   <div className="hero-content flex-col lg:flex-row">
@@ -16,7 +20,7 @@ const Login = () => {
 
     
     <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
-      <form onSubmit={handleSubmit()}>
+      <form onSubmit={handleSubmit(handleLogin)}>
       <div className="card-body">
         <div className="form-control">
           <label className="label">
