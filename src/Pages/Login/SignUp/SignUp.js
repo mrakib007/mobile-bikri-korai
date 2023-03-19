@@ -37,7 +37,7 @@ const SignUp = () => {
   const saveUser = (name, email, role) => {
     const user = { name, email, role };
     fetch("http://localhost:5000/users", {
-      method: "Post",
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
@@ -45,6 +45,7 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        toast.success("User saved");
         console.log("saved user", data);
         setCreatedUserEmail(email);
       });
@@ -61,7 +62,7 @@ const SignUp = () => {
           </p>
           <p>
             Already have an account?{" "}
-            <Link to="/login" className="text-primary">
+            <Link to="/login" className="text-primary text-2xl">
               Log In
             </Link>{" "}
             from here.
@@ -153,7 +154,11 @@ const SignUp = () => {
                 </div>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Sign Up</button>
+              <input
+                  className="btn btn-primary "
+                  value="Signup"
+                  type="submit"
+                ></input>
                 {signUpError && <p className="text-red-600">{signUpError}</p>}
               </div>
               <div class="divider">OR</div>
