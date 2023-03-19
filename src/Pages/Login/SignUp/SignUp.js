@@ -34,6 +34,22 @@ const SignUp = () => {
     });
   };
 
+  // const saveUser = (name, email, role) => {
+  //   const user = { name, email, role };
+  //   fetch("http://localhost:5000/users", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(user),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       toast.success("User saved");
+  //       console.log("saved user", data);
+  //       setCreatedUserEmail(email);
+  //     });
+  // };
   const saveUser = (name, email, role) => {
     const user = { name, email, role };
     fetch("http://localhost:5000/users", {
@@ -48,8 +64,13 @@ const SignUp = () => {
         toast.success("User saved");
         console.log("saved user", data);
         setCreatedUserEmail(email);
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error("Error saving user");
       });
   };
+  
   return (
     <div className="hero height bg-base-200  max-w-[1210px] mx-auto my-auto">
       <div className="hero-content flex-col lg:flex-row">
