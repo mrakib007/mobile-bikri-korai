@@ -5,7 +5,7 @@ const Dashboard = () => {
     const {user} = useContext(AuthContext);
     return (
         <div>
-            Welcome {user} to your dashboard
+            <h1 className='text-primary text-3xl'>My Bookings</h1>
         </div>
     );
 };
