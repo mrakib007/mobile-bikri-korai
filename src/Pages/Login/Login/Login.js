@@ -16,13 +16,13 @@ const Login = () => {
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const [createUserEmail, setCreatedUserEmail] = useState("");
   const { providerLogin, signIn, updateUser } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
   // navigate(from,{replace: true});
 
-  const googleProvider = new GoogleAuthProvider();
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
@@ -47,9 +47,9 @@ const Login = () => {
           displayName: data.name,
         };
         console.log(userInfo);
-        updateUser(userInfo).then(() => {
-          // saveUser(data.name, data.email, data.role);
-        });
+        // updateUser(userInfo).then(() => {
+        //   saveUser(data.name, data.email, data.role);
+        // });
         navigate(from, { replace: true });
       })
       .catch((error) => {

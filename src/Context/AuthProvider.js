@@ -4,10 +4,9 @@ import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
-// const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
-    const [user,setUser] = useState(null);
+  const [user,setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   
   const providerLogin = (provider) =>{
@@ -20,13 +19,8 @@ const AuthProvider = ({ children }) => {
   };
 
   const updateUser = (userInfo) =>{
-    setLoading(true);
     return updateProfile(auth.currentUser,userInfo);
   }
-  // const updateUser = (userInfo) =>{
-  //   setLoading(true);
-  //   return updateProfile(auth.currentUser,{displayName : userInfo});
-  // }
 
   const signIn = (email,password) =>{
     setLoading(true);
@@ -59,7 +53,9 @@ const AuthProvider = ({ children }) => {
     setLoading,
   };
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
