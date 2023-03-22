@@ -7,7 +7,9 @@ const DashBoardLayout = () => {
     <div className="max-w-[1200px] mx-auto">
       <NavBar></NavBar>
       <div className="drawer drawer-mobile">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+        <input id="my-drawer-2"
+         type="checkbox" 
+         className="drawer-toggle" />
         <div className="drawer-content">
           <Outlet></Outlet>
         </div>
@@ -18,9 +20,7 @@ const DashBoardLayout = () => {
               <Link to="/dashboard">My Bookings</Link>
             </li>
             <li>
-              {
-                'This is temporary'
-              }
+              <Link to="/dashboard/addProduct">Add Phone</Link>
             </li>
           </ul>
         </div>
