@@ -4,14 +4,14 @@ import phone1 from '../../../assets/images/phone1.jpg';
 import SingleCard from './SingleCard';
 
 const HomePageCards = () => {
-    const {data: allCategories = []} = useQuery({
-        // queryKey: ['users'],
-        queryFn: async () =>{
-            const res = await fetch('http://localhost:5000/mobiles');
-            const data = await res.json();
-            return data;
-        }
-    })
+    // const {data: allCategories = []} = useQuery({
+    //     // queryKey: ['users'],
+    //     queryFn: async () =>{
+    //         const res = await fetch('http://localhost:5000/mobiles');
+    //         const data = await res.json();
+    //         return data;
+    //     }
+    // })
     let cards = [
         {
             id: 1,
