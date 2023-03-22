@@ -144,26 +144,73 @@ const AddProduct = () => {
               <p className="text-red-500">{errors.name.message}</p>
             )}
           </div>
-          
-          <select {...register("Title", { required: true })}>
-            <option value="Mr">Mr</option>
-            <option value="Mrs">Mrs</option>
-            <option value="Miss">Miss</option>
-            <option value="Dr">Dr</option>
-          </select>
 
-          <input
-            {...register("Developer", { required: true })}
-            type="radio"
-            value="Yes"
-          />
-          <input
-            {...register("Developer", { required: true })}
-            type="radio"
-            value="No"
-          />
+          <div className="flex justify-between">
+            <div className="form-control w-full ">
+              <label className="label">
+                {" "}
+                <span className="label-text">Product Condition</span>
+              </label>
+              <div className="input-group w-full">
+                <select
+                  {...register("condition", {
+                    required: true,
+                  })}
+                  className="select select-bordered"
+                >
+                  <option>Excellent</option>
+                  <option>Good</option>
+                  <option>Fair</option>
+                </select>
+              </div>
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                {" "}
+                <span className="label-text">Product Category</span>
+              </label>
+              <div className="input-group w-full">
+                <select
+                  {...register("category", {
+                    required: true,
+                  })}
+                  className="select select-bordered"
+                >
+                  {/* {brands.map((brand) => (
+                    <option key={brand._id} value={brand.id}>
+                      {brand.category}
+                    </option>
+                  ))} */}
+                </select>
+              </div>
+            </div>
+          </div>
 
-          <input type="submit" />
+          <textarea
+            {...register("details", {
+              required: true,
+            })}
+            className="textarea textarea-info mt-5 w-96"
+            placeholder="Product Details"
+          ></textarea>
+
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              {" "}
+              <span className="label-text">Photo</span>
+            </label>
+            <input
+              type="file"
+              {...register("image", {
+                required: "Photo is Required",
+              })}
+              className="file-input file-input-bordered w-full max-w-xs"
+            />
+            {/* {errors.img && <p className='text-red-500'>{errors.img.message}</p>} */}
+          </div>
+
+          <input className='btn btn-primary mt-4' value="Add Product" type="submit" />
+
         </form>
       </div>
     </div>

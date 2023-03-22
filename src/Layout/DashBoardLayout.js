@@ -20,6 +20,9 @@ const DashBoardLayout = () => {
               <Link to="/dashboard">My Bookings</Link>
             </li>
             <li>
+              <Link to="/dashboard/allUsers">All Users</Link>
+            </li>
+            <li>
               <Link to="/dashboard/addProduct">Add Phone</Link>
             </li>
           </ul>
