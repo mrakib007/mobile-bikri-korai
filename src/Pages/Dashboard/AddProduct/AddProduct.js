@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
+import { useQuery } from '@tanstack/react-query';
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
+import { format } from "date-fns";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
@@ -12,39 +14,46 @@ const AddProduct = () => {
     formState: { errors },
   } = useForm();
   const [data, setData] = useState("");
+  const date = format(new Date(), "PP");
+
+  const {data: brands = [], isLoading} = useQuery({
+    queryKey: ['Brand'],
+    queryFn: async () =>{
+      const res = await fetch('http://localhost:5000/mobiles')
+      const data = await res.json();
+      return data;
+    }
+  })
+  const imageHostKey = process.env.REACT_APP_imgbb_key;
+
+  const handleAddProduct = data =>{
+    console.log(data);
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append('image',image);
+    const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+    fetch(url,{
+      method: 'POST',
+      body: formData
+    }).then(res => res.json())
+    .then(imgData =>{
+      if(imgData.success){
+        console.log(imgData.data.url)
+      }
+      const product = {
+        seller_name: user.displayName,
+        title: data.productName,
+        location: data.location,
+      }
+    })
+  }
+
   return (
     <div className="ml-5">
       <h3 className="text-3xl text-primary">Add a Phone</h3>
 
       <div className="flex-col mt-8">
-        {/* <form onSubmit={handleSubmit()}>
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <div className="card-body">
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Product Name</span>
-          </label>
-          <input type="text" {...register("productName", {
-                                    required: "Product Name is Required"
-                                })} className="input input-bordered w-96 max-w-xs" />
-                                 {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Resale Price</span>
-          </label>
-          <input type="text" {...register("originalPrice", {
-                                    required: "Original Price is Required"
-                                })} className="input input-bordered w-96 max-w-xs" />
-                                {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
-        </div>
-        <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
-        </div>
-      </div>
-    </div>
-    </form> */}
-        <form onSubmit={handleSubmit()}>
+        <form onSubmit={handleSubmit(handleAddProduct)}>
           <div className="form-control w-96 max-w-xs">
             <label className="label">
               {" "}
@@ -70,7 +79,7 @@ const AddProduct = () => {
             <input
               type="text"
               {...register("originalPrice", {
-                required: "Original Price is Required",
+                required: "Resale Price is Required",
               })}
               className="input input-bordered w-96 max-w-xs"
             />
@@ -86,7 +95,7 @@ const AddProduct = () => {
             <input
               type="text"
               {...register("resalePrice", {
-                required: "Resale Price is Required",
+                required: "Original Price is Required",
               })}
               className="input input-bordered w-96 max-w-xs"
             />
