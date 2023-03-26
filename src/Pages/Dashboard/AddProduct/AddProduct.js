@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 import { format } from "date-fns";
+import { toast } from "react-hot-toast";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
@@ -44,7 +45,30 @@ const AddProduct = () => {
         seller_name: user.displayName,
         title: data.productName,
         location: data.location,
+        resale_price: data.resalePrice,
+        original_price: data.originalPrice,
+        years_of_use: data.purchaseDate,
+        image_url: imgData.data.url,
+        details: data.details,
+        posted: date,
+        id: date.category,
+        email: user.email
       }
+
+      fetch('http://localhost:5000/products',{
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          // authorization: `bearer ${localStorage.getItem('accessToken')}`
+        },
+        body: JSON.stringify(product)
+      })
+      .then(res => res.json())
+      .then(result =>{
+        console.log(result);
+        toast.success('Product Post Done');
+        navigate('/dashboard/myProducts');
+      })
     })
   }
 
