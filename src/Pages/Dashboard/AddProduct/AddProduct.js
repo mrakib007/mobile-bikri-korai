@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 import { format } from "date-fns";
 import { toast } from "react-hot-toast";
+import Loading from '../../Shared/Loading/Loading';
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
@@ -68,8 +69,15 @@ const AddProduct = () => {
         console.log(result);
         toast.success('Product Post Done');
         navigate('/dashboard/myProducts');
+        if(data.acknowledged){
+          toast.success('Products added');
+          // navigate('/dashboard/myProducts');
+        }
       })
     })
+    if(isLoading){
+      return <Loading></Loading>
+    }
   }
 
   return (
@@ -209,11 +217,11 @@ const AddProduct = () => {
                   })}
                   className="select select-bordered"
                 >
-                  {/* {brands.map((brand) => (
+                  {brands?.map((brand) => (
                     <option key={brand._id} value={brand.id}>
                       {brand.category}
                     </option>
-                  ))} */}
+                  ))}
                 </select>
               </div>
             </div>
