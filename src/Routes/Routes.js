@@ -8,6 +8,7 @@ import HomePage from "../Pages/Home/HomePage/HomePage";
 import SingleCard from "../Pages/Home/HomePageCards/SingleCard";
 import Login from "../Pages/Login/Login/Login";
 import SignUp from "../Pages/Login/SignUp/SignUp";
+import MobileDetails from "../Pages/Mobiles/MobileDetails/MoblieDetails";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>,
+            },
+            {
+                path: '/mobiles/:id',
+                element: <MobileDetails></MobileDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/mobiles/${params.id}`)
             }
         ],
     },

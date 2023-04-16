@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import NavBar from "../Pages/Shared/NavBar/NavBar";
+import { AuthContext } from "../Context/AuthProvider";
+import useAdmin from '../hooks/useAdmin';
+import useBuyer from '../hooks/useBuyer';
+import useSeller from '../hooks/useSeller';
 
 const DashBoardLayout = () => {
+  const {user} = useContext(AuthContext);
+  const [isAdmin] = useAdmin(user?.email);
+  const [isBuyer] = useBuyer(user?.email);
+  const [isSeller] = useSeller(user?.email);
   return (
     <div className="max-w-[1200px] mx-auto">
       <NavBar></NavBar>
