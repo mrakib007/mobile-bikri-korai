@@ -30,8 +30,8 @@ const router = createBrowserRouter([
             {
                 path: '/mobiles/:id',
                 element: <MobileDetails></MobileDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/mobiles/${params.id}`)
-            }
+                loader: ({params}) => fetch(`http://localhost:5000/mobiles/${params._id}`)
+            },
         ],
     },
     {

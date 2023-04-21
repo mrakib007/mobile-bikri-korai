@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const SingleCard = ({category}) => {
     const {_id,category:brand,logo} = category;
+    console.log(logo)
   return (
     <div className="card w-96 bg-base-100 shadow-xl image-full">
       <figure>
