@@ -52,7 +52,7 @@ const AddProduct = () => {
         image_url: imgData.data.url,
         details: data.details,
         posted: date,
-        id: date.category,
+        id: data.category,
         email: user.email
       }
 

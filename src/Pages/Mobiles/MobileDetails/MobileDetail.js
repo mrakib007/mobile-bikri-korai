@@ -3,6 +3,7 @@ import React from 'react';
 const MobileDetail = ({mobile}) => {
     const {title,image_url,details,location,original_price,posted, resale_price, years_of_use, seller_name} = mobile;
     const word = details.slice(0,50);
+    console.log(title)
     return (
 //         <section class="text-gray-600 body-font">
 //   <div class="container px-5 py-24 mx-auto">
@@ -21,7 +22,9 @@ const MobileDetail = ({mobile}) => {
           <h2 class="text-lg text-gray-900 font-medium title-font mb-4 underline decoration-indigo-400">Resale Price: {location}</h2>
           <h2 class="text-lg text-gray-900 font-medium title-font mb-4 underline decoration-indigo-400">Resale Price: {posted}</h2>
 
+          <button className='btn btn-primary'>Button</button>
         </div>
+        
       </div>
       
     //  </div> 
