@@ -8,9 +8,9 @@ const MobileDetails = () => {
     console.log(mobileDetails);
     
     return (
-        <div>
-            <h1 className='text-center text-xl'>Pre Owned {mobileDetails[0].title} Phones</h1>
-            <div>
+        <div className='max-w-[1500px] mx-auto my-10 '>
+            <h1 className='text-center text-xl my-10'>Pre Owned {mobileDetails[0].title} Phones</h1>
+            <div className='flex flex-wrap -m-4'>
                 {
                     mobileDetails.map(mobile => <MobileDetail
                     key={mobile._id}
