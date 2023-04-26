@@ -9,6 +9,7 @@ import SingleCard from "../Pages/Home/HomePageCards/SingleCard";
 import Login from "../Pages/Login/Login/Login";
 import SignUp from "../Pages/Login/SignUp/SignUp";
 import MobileDetails from "../Pages/Mobiles/MobileDetails/MoblieDetails";
+import MyProducts from "../Pages/Dashboard/MyProducts/MyProducts";
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/addProduct',
                 element: <AddProduct></AddProduct>
+            },
+            {
+                path: '/dashboard/myProducts',
+                element: <MyProducts></MyProducts>
             }
         ]
     }
