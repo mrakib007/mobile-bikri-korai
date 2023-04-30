@@ -7,7 +7,7 @@ const MyProducts = () => {
     const [products,setProducts] = useState([]);
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/myproducts?email=${user.email}`,{
+        fetch(`http://localhost:5000/myproducts?email=${user?.email}`,{
             // headers: {
             //     authorization: `Bearer ${localStorage.getItem('laptopZone-token')}`
             // }
@@ -39,7 +39,7 @@ const MyProducts = () => {
     }
 
     const handleStatusUpdate = id =>{
-        fetch(`http://localhost:5000/products/${id}`,{
+        fetch(`http://localhost:5000/myProducts/${id}`,{
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
