@@ -33,7 +33,7 @@ const HomePageCards = () => {
     //     },
     // ]
     return (
-        <div className='max-w-[1210px] mx-auto'>
+        <div className='max-w-[1200px] mx-auto'>
             <h1 className='text-5xl font-bold'>Our Categories</h1>
         <div className='grid gap-4 mt-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {

@@ -37,6 +37,7 @@ const MyProducts = () => {
             })
         }
     }
+    console.log(products)
 
     const handleStatusUpdate = id =>{
         fetch(`http://localhost:5000/myProducts/${id}`,{
