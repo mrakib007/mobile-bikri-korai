@@ -6,7 +6,6 @@ import BookingModal from '../BookingModal/BookingModal';
 const MobileDetails = () => {
     const mobileDetails = useLoaderData();
     const [productBooking,setProductBooking] = useState(null);
-    console.log(mobileDetails,'mobile details');
     
     return (
         <div className='max-w-[1500px] mx-auto my-10 '>
