@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import MobileDetail from './MobileDetail'
+import MobileDetail from './MobileDetail';
+import BookingModal from '../BookingModal/BookingModal';
 
 const MobileDetails = () => {
     const mobileDetails = useLoaderData();
@@ -15,10 +16,18 @@ const MobileDetails = () => {
                     mobileDetails?.map(mobile => <MobileDetail
                     key={mobile._id}
                     mobile = {mobile}
+                    setProductBooking={setProductBooking}
                     >
                     </MobileDetail>) 
                 }
             </div>
+            {
+                productBooking && 
+                <BookingModal
+                productBooking={productBooking}
+                setProductBooking={setProductBooking}>                    
+                </BookingModal>
+            }
         </div>
     );
 };
