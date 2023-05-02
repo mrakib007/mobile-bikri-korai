@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../../Context/AuthProvider';
+import { MdOutlineDashboardCustomize } from "react-icons/md";
 
 const NavBar = () => {
   const {user,logOut} = useContext(AuthContext);
@@ -54,6 +55,12 @@ const NavBar = () => {
       <Link to="/login" className="btn">Login</Link>
       </>
     }
+
+<ul className="menu menu-horizontal p-0 transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none">
+                    <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+                        <MdOutlineDashboardCustomize className='text-xl'></MdOutlineDashboardCustomize>
+                    </label>
+                </ul>
     
   </div>
 </div>

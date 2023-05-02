@@ -11,6 +11,9 @@ import SignUp from "../Pages/Login/SignUp/SignUp";
 import MobileDetails from "../Pages/Mobiles/MobileDetails/MoblieDetails";
 import MyProducts from "../Pages/Dashboard/MyProducts/MyProducts";
 import SellerRoute from './SellerRoute/SellerRoute';
+import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
+import NavBar from "../Pages/Shared/NavBar/NavBar";
+import Footer from "../Pages/Shared/Footer/Footer";
 
 const router = createBrowserRouter([
     {
@@ -50,13 +53,24 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addProduct',
-                element: <AddProduct></AddProduct>
+                element: <AddProduct></AddProduct>,
+                loader: () => fetch(`http://localhost:5000/mobiles`)
             },
             {
                 path: '/dashboard/myProducts',
                 element: <SellerRoute> <MyProducts></MyProducts> </SellerRoute>,
+            },
+            {
+                path:'/dashboard/myOrders',
+                element: <MyBookings></MyBookings>
             }
         ]
+    },{
+        path: '*',element: <div>
+            <NavBar></NavBar>
+            {/* <ErrorPage></ErrorPage> */},
+            <Footer></Footer>
+        </div>
     }
 ]);
 
