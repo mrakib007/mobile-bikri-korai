@@ -24,8 +24,68 @@ const CheckoutFrom = ({booking}) => {
         .then((data)=>(data.clientSecret));
     },[price])
 
-    const handleSubmit = () =>{
+    const handleSubmit = async (event) =>{
+        event.preventDefault();
 
+        if(!stripe || !elements){
+            return;
+        }
+        const card = elements.getElement(CardElement);
+        if(card===null){
+            return;
+        }
+        const{error,paymentMethod} = await stripe.createPaymentMethod({
+            type: 'card',
+            card,
+        });
+        if(error){
+            setCardError(error.message);
+        }else{
+            setCardError('');
+        }
+        setSuccess('');
+        setProcessing(true);
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: name,
+                        email: email
+                    },
+                },
+            },
+        );
+        if(confirmError){
+            setCardError(confirmError.message);
+            return;
+        }
+        if(paymentIntent.status === "succeeded"){
+            //store payment info in the database
+            const payment = {
+                price,
+                transactionId: paymentIntent.id,
+                email,
+                bookingId: _id
+            }
+            fetch('http://localhost:5000/payments',{
+                method:'POST',
+                header:{
+                    'content-type':'application/json',
+                    authorization:`bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(payment)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                if(data.insertedId){
+                    setSuccess('Congrats! your payment is completed');
+                    setTransactionId(paymentIntent.id);
+                }
+            })
+        }
+        setProcessing(false);
     }
     return (
         <>
