@@ -27,10 +27,7 @@ const DashBoardLayout = () => {
             {isBuyer && 
             <React.Fragment>
             <li>
-              <Link to="/dashboard">My Bookings</Link>
-            </li>
-            <li>
-              <Link to="/dashboard">My Bookings</Link>
+              <Link to="/dashboard/myOrders">My Bookings</Link>
             </li>
             </React.Fragment>
             }

@@ -60,7 +60,7 @@ const AddProduct = () => {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
-          // authorization: `bearer ${localStorage.getItem('accessToken')}`
+          authorization: `bearer ${localStorage.getItem('accessToken')}`
         },
         body: JSON.stringify(product)
       })
@@ -71,7 +71,7 @@ const AddProduct = () => {
         navigate('/dashboard/myProducts');
         if(data.acknowledged){
           toast.success('Products added');
-          // navigate('/dashboard/myProducts');
+          navigate('/dashboard/myProducts');
         }
       })
     })
