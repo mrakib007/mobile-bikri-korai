@@ -17,6 +17,8 @@ import Footer from "../Pages/Shared/Footer/Footer";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import BuyerRoute from "./BuyerRoute/BuyerRoute";
 import AdminRoute from "./AdminRoute/AdminRoute";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -68,12 +70,17 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/myOrders',
                 element: <BuyerRoute><MyBookings></MyBookings></BuyerRoute>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <BuyerRoute><Payment></Payment></BuyerRoute>,
+                loader: () => fetch(`http://localhost:5000/mobiles`)
             }
         ]
     },{
         path: '*',element: <div>
             <NavBar></NavBar>
-            {/* <ErrorPage></ErrorPage> */},
+            <ErrorPage></ErrorPage>,
             <Footer></Footer>
         </div>
     }
