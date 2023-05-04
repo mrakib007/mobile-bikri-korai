@@ -14,6 +14,9 @@ import SellerRoute from './SellerRoute/SellerRoute';
 import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
 import NavBar from "../Pages/Shared/NavBar/NavBar";
 import Footer from "../Pages/Shared/Footer/Footer";
+import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
+import BuyerRoute from "./BuyerRoute/BuyerRoute";
+import AdminRoute from "./AdminRoute/AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -41,7 +44,9 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashBoardLayout></DashBoardLayout>,
+        element: <PrivateRoutes>
+            <DashBoardLayout></DashBoardLayout>
+            </PrivateRoutes>,
         children: [
             {
                 path: '/dashboard',
@@ -49,11 +54,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allUsers',
-                element: <AllUsers></AllUsers>
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
             {
                 path: '/dashboard/addProduct',
-                element: <AddProduct></AddProduct>,
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>,
                 loader: () => fetch(`http://localhost:5000/mobiles`)
             },
             {
@@ -62,7 +67,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/dashboard/myOrders',
-                element: <MyBookings></MyBookings>
+                element: <BuyerRoute><MyBookings></MyBookings></BuyerRoute>
             }
         ]
     },{
