@@ -1,9 +1,9 @@
 import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
-import Loading from '../../Shared/Loading';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutFrom from './CheckoutFrom';
+import Loading from '../../Shared/Loading/Loading';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 const Payment = () => {

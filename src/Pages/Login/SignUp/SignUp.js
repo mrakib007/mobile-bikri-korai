@@ -18,9 +18,10 @@ const SignUp = () => {
   const [createdUserEmail, setCreatedUserEmail] = useState("");
   const { reset } = useForm();
   const [token] = useToken(createdUserEmail);
+  const from = location.state?.from.pathname || '/';
 
   if(token){
-    navigate('/');
+    navigate(from,{replace: true});
   }
 
   const handleSignUp = (data) => {
