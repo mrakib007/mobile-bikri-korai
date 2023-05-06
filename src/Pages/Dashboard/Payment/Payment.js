@@ -9,9 +9,9 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 const Payment = () => {
     const navigation = useNavigation();
     const booking = useLoaderData();
-    if(navigation.state === 'loading'){
-        return <Loading></Loading>
-    }
+    // if(navigation.state === 'loading'){
+    //     return <Loading></Loading>
+    // }
     return (
         <div>
             <h3 className='text-3xl'>Payment For {booking.productBooking}</h3>
