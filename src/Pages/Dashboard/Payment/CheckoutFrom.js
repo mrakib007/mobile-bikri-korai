@@ -21,7 +21,7 @@ const CheckoutFrom = ({booking}) => {
             body:JSON.stringify({price}),
         })
         .then((res)=>res.json())
-        .then((data)=>(data.clientSecret));
+        .then((data)=>setClientSecret(data.clientSecret));
     },[price])
 
     const handleSubmit = async (event) =>{
@@ -71,7 +71,7 @@ const CheckoutFrom = ({booking}) => {
             }
             fetch('http://localhost:5000/payments',{
                 method:'POST',
-                header:{
+                headers:{
                     'content-type':'application/json',
                     authorization:`bearer ${localStorage.getItem("accessToken")}`
                 },
