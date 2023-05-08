@@ -29,14 +29,14 @@ const NavBar = () => {
             <Link to="/dashboard">Dashboard</Link>
           </li>
           <li>
-            <Link onClick={handleLogOut} className="lg:hidden md:hidden">
+            <Link onClick={handleLogOut} className="lg:hidden">
               Logout
             </Link>
           </li>
         </>
       ) : (
         <li>
-          <Link className="lg:hidden md:hidden" to="/login">
+          <Link className="lg:hidden " to="/login">
             Login{" "}
           </Link>
         </li>
