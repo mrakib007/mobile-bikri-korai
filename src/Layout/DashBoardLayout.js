@@ -11,9 +11,11 @@ const DashBoardLayout = () => {
   const [isAdmin] = useAdmin(user?.email);
   const [isBuyer] = useBuyer(user?.email);
   const [isSeller] = useSeller(user?.email);
+  
   return (
     <div className="max-w-[1200px] mx-auto">
       <NavBar></NavBar>
+    
       <div className="drawer drawer-mobile">
         <input id="dashboard-drawer"
          type="checkbox" 

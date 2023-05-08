@@ -15,7 +15,7 @@ const Login = () => {
   const [loginError, setLoginError] = useState("");
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const [createUserEmail, setCreatedUserEmail] = useState("");
-  const { providerLogin, signIn, updateUser,setUser,settingUser } = useContext(AuthContext);
+  const { providerLogin, signIn, updateUser } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const location = useLocation();
   const navigate = useNavigate();
@@ -48,8 +48,6 @@ const Login = () => {
           displayName: data.name,
         };
         // console.log(userInfo);
-        // setUser(user);
-        settingUser(user);
         console.log(user)
         // updateUser(userInfo).then(() => {
         //   saveUser(data.name, data.email, data.role);

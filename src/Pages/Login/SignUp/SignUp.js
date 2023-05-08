@@ -12,7 +12,7 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const [signUpError, setSignUpError] = useState("");
-  const { createUser, updateUser,setUser,settingUser } = useContext(AuthContext);
+  const { createUser, updateUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const [createdUserEmail, setCreatedUserEmail] = useState("");
@@ -31,8 +31,6 @@ const SignUp = () => {
       const user = result.user;
       console.log(user);
       toast.success("User created successfully!");
-      // setUser(user);
-      settingUser(user);
       const userInfo = {
         displayName: data.name,
       };
