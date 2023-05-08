@@ -21,7 +21,7 @@ const AddProduct = () => {
   const {data: brands = [], isLoading} = useQuery({
     queryKey: ['Brand'],
     queryFn: async () =>{
-      const res = await fetch('http://localhost:5000/mobiles')
+      const res = await fetch('https://y-9jemzp2tg-mrakib007.vercel.app/mobiles')
       const data = await res.json();
       return data;
     }
@@ -56,7 +56,7 @@ const AddProduct = () => {
         email: user.email
       }
 
-      fetch('http://localhost:5000/products',{
+      fetch('https://y-9jemzp2tg-mrakib007.vercel.app/products',{
         method: 'POST',
         headers: {
           'content-type': 'application/json',

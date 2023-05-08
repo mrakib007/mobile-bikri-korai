@@ -4,11 +4,15 @@ import { AuthContext } from "../../../Context/AuthProvider";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 
 const NavBar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut,test,setUser } = useContext(AuthContext);
+  console.log(user);
+  console.log(test);
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        setUser(null);
+      })
       .catch((error) => console.error(error));
   };
   const menuItems = 

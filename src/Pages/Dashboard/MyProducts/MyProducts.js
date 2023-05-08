@@ -7,7 +7,7 @@ const MyProducts = () => {
     const [products,setProducts] = useState([]);
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/myproducts?email=${user?.email}`,{
+        fetch(`https://y-9jemzp2tg-mrakib007.vercel.app/myproducts?email=${user?.email}`,{
             headers: {
                 authorization: `Bearer ${localStorage.getItem('laptopZone-token')}`
             }
@@ -24,7 +24,7 @@ const MyProducts = () => {
     const handleDelete = id =>{
         const proceed = window.confirm('Are you sure you want to delete this product?');
         if(proceed){
-            fetch(`http://localhost:5000/products/${id}`,{
+            fetch(`https://y-9jemzp2tg-mrakib007.vercel.app/products/${id}`,{
                 method:'DELETE'
             })
             .then(res => res.json())
@@ -40,7 +40,7 @@ const MyProducts = () => {
     console.log(products)
 
     const handleStatusUpdate = id =>{
-        fetch(`http://localhost:5000/myProducts/${id}`,{
+        fetch(`https://y-9jemzp2tg-mrakib007.vercel.app/myProducts/${id}`,{
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

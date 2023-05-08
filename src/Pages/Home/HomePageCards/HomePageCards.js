@@ -7,7 +7,7 @@ const HomePageCards = () => {
     const {data: allCategories = []} = useQuery({
         queryKey: ['users'],
         queryFn: async () =>{
-            const res = await fetch('http://localhost:5000/mobiles');
+            const res = await fetch('https://y-9jemzp2tg-mrakib007.vercel.app/mobiles');
             const data = await res.json();
             return data;
         }

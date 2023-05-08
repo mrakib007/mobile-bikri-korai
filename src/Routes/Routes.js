@@ -40,7 +40,7 @@ const router = createBrowserRouter([
             {
                 path: '/mobiles/:id',
                 element: <MobileDetails></MobileDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/mobiles/${params.id}`)
+                loader: ({params}) => fetch(`https://y-9jemzp2tg-mrakib007.vercel.app/mobiles/${params.id}`)
             },
         ],
     },
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/addProduct',
                 element: <SellerRoute><AddProduct></AddProduct></SellerRoute>,
-                loader: () => fetch(`http://localhost:5000/mobiles`)
+                loader: () => fetch(`https://y-9jemzp2tg-mrakib007.vercel.app/mobiles`)
             },
             {
                 path: '/dashboard/myProducts',
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <BuyerRoute><Payment></Payment></BuyerRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                loader: ({params}) => fetch(`https://y-9jemzp2tg-mrakib007.vercel.app/bookings/${params.id}`)
             }
         ]
     },{

@@ -15,7 +15,7 @@ const Login = () => {
   const [loginError, setLoginError] = useState("");
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const [createUserEmail, setCreatedUserEmail] = useState("");
-  const { providerLogin, signIn, updateUser } = useContext(AuthContext);
+  const { providerLogin, signIn, updateUser,setUser,settingUser } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const location = useLocation();
   const navigate = useNavigate();
@@ -47,7 +47,10 @@ const Login = () => {
         const userInfo = {
           displayName: data.name,
         };
-        console.log(userInfo);
+        // console.log(userInfo);
+        // setUser(user);
+        settingUser(user);
+        console.log(user)
         // updateUser(userInfo).then(() => {
         //   saveUser(data.name, data.email, data.role);
         // });
@@ -61,7 +64,7 @@ const Login = () => {
 
   // const saveUser = (name, email, role) => {
   //   const user = { name, email, role };
-  //   fetch("http://localhost:5000/users", {
+  //   fetch("https://y-9jemzp2tg-mrakib007.vercel.app/users", {
   //     method: "POST",
   //     headers: {
   //       "content-type": "application/json",

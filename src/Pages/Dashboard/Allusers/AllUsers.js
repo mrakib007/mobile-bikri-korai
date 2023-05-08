@@ -7,7 +7,7 @@ const AllUsers = () => {
     // const [users,setUsers] = useState([]);
 
     // useEffect(()=>{
-    //     fetch('http://localhost:5000/users')
+    //     fetch('https://y-9jemzp2tg-mrakib007.vercel.app/users')
     //     .then(res => res.json())
     //     .then(data => setUsers(data))
     // },[]);
@@ -21,14 +21,14 @@ const AllUsers = () => {
     const {data: users = [],refetch} = useQuery({
       queryKey: ['users'],
       queryFn: async() =>{
-        const res = await fetch('http://localhost:5000/users');
+        const res = await fetch('https://y-9jemzp2tg-mrakib007.vercel.app/users');
         const data = await res.json();
         return data;
       }
     });
 
     const handleMakeAdmin = id =>{
-      fetch(`http://localhost:5000/users/admin/${id}`,{
+      fetch(`https://y-9jemzp2tg-mrakib007.vercel.app/users/admin/${id}`,{
         method: 'PUT',
         headers: {
           authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -46,7 +46,7 @@ const AllUsers = () => {
     // const handleDelete = id =>{
     //   const proceed = window.confirm("Are you sure you want to delete this user?");
     //   if(proceed){
-    //     fetch(`http://localhost:5000/users/${users.id}`,{
+    //     fetch(`https://y-9jemzp2tg-mrakib007.vercel.app/users/${users.id}`,{
     //       method: 'DELETE'
     //     })
     //     .then(res => res.json())
