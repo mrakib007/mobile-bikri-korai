@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 const BookingModal = ({ productBooking, setProductBooking }) => {
   const { title, resale_price, image_url } = productBooking;
   const { user } = useContext(AuthContext);
+  console.log(user)
   const handleBooking = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -43,7 +44,7 @@ const BookingModal = ({ productBooking, setProductBooking }) => {
     })
   };
   return (
-    <>
+    <div data-theme="light">
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
@@ -59,28 +60,28 @@ const BookingModal = ({ productBooking, setProductBooking }) => {
             className="gird grid-cols-1 gap-3 mt-8"
           >
             <input
-              className="input w-full input-bordered"
+              className="input w-full input-bordered mb-2"
               type="text"
               name="name"
               defaultValue={user?.displayName}
               disabled
             />
             <input
-              className="input w-full input-bordered"
+              className="input w-full input-bordered mb-2"
               type="email"
               name="email"
               defaultValue={user?.email}
               disabled
             />
             <input
-              className="input w-full input-bordered"
+              className="input w-full input-bordered mb-2"
               type="text"
               name="price"
               defaultValue={resale_price}
               disabled
             />
             <input
-              className="input w-full input-bordered"
+              className="input w-full input-bordered mb-2"
               name="phone"
               type="number"
               placeholder="Phone Number"
@@ -90,7 +91,7 @@ const BookingModal = ({ productBooking, setProductBooking }) => {
               name="meetingLocation"
               type="text"
               placeholder="Meeting Location"
-              className="input w-full input-bordered"
+              className="input w-full input-bordered mb-2"
               required
             />
             <br />
@@ -102,7 +103,7 @@ const BookingModal = ({ productBooking, setProductBooking }) => {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../Context/AuthProvider";
 
 const MobileDetail = ({ mobile,setProductBooking }) => {
+  const {user} = useContext(AuthContext);
   const {
     title,
     image_url,
@@ -32,29 +34,65 @@ const MobileDetail = ({ mobile,setProductBooking }) => {
         <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
           {title}
         </h2>
-        <p class="leading-relaxed text-base">{word}</p>
-        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 underline decoration-indigo-400">
-          Original Price: {original_price}
+        <p class="text-black text-base">{word}</p>
+
+        <div className="flex justify-between">
+        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 my-2 flex">
+          Original Price: 
         </h2>
-        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 underline decoration-indigo-400">
-          Resale Price: {resale_price}
+        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 my-2 mx-8 flex">
+          {original_price} tk
         </h2>
-        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 underline decoration-indigo-400">
-          Resale Price: {years_of_use}
+        </div>
+
+        <div className="flex justify-between">
+        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 my-2 flex">
+        Resale Price: 
         </h2>
-        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 underline decoration-indigo-400">
-          Resale Price: {seller_name}
+        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 my-2 mx-8 flex">
+        {resale_price} tk
         </h2>
-        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 underline decoration-indigo-400">
-          Resale Price: {location}
+        </div>
+
+        <div className="flex justify-between">
+        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 my-2 flex">
+           Years of use: 
         </h2>
-        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 underline decoration-indigo-400">
-          Resale Price: {posted}
+        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 my-2 mx-8 flex">
+        {years_of_use}
         </h2>
+        </div>
+
+        <div className="flex justify-between">
+        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 my-2 flex">
+           Seller Name: 
+        </h2>
+        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 my-2 mx-8 flex">
+        {seller_name}
+        </h2>
+        </div>
+
+        <div className="flex justify-between">
+        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 my-2 flex">
+           Location: 
+        </h2>
+        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 my-2 mx-8 flex">
+        {location}
+        </h2>
+        </div>
+
+        <div className="flex justify-between">
+        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 my-2 flex">
+           Post Date: 
+        </h2>
+        <h2 class="text-lg text-gray-900 font-medium title-font mb-4 my-2 mx-8 flex">
+        {posted}
+        </h2>
+        </div>
 
         {/* <button className='btn btn-primary'>Button</button> */}
 
-        <label htmlFor="booking-modal" className="btn"
+        <label htmlFor="booking-modal" className="btn btn-primary" disabled={!user}
         onClick={()=> setProductBooking(mobile)}>
           Buy Now
         </label>

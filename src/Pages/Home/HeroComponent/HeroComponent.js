@@ -18,10 +18,10 @@ const HeroComponent = () => {
 //     </div>
 //   </div>
 // </div>
-<section  class="text-gray-600 body-font max-w-[1210px] mx-auto my-10">
+<section  class="leading-relaxed body-font max-w-[1210px] mx-auto my-10">
   <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
     <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-      <h1 class="title-font sm:text-4xl  mb-4  text-5xl font-bold">Before they sold out</h1>
+      <h1 class="title-font sm:text-4xl  mb-4  text-5xl font-bold">Your very own mobile buying and selling place is here!</h1>
       <br />
         <h1 class="hidden lg:inline-block">readymade gluten</h1>
       
